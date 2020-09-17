@@ -11,13 +11,10 @@ namespace SalariesdLL
         private double _chiffreDaffaire;
         private double _commissionEnPourcentage;
 
-        // Constructeur par défaut
-
         public Commercial()
         {
 
         }
-
         // Constructeur de recopie
         public Commercial(Commercial com)
         {
@@ -25,23 +22,46 @@ namespace SalariesdLL
         }
 
         // Appel des constructeurs de la classe de base
-        public Commercial(double chiffreDaffaire, double commissionEnpourcentage, string Prenom, string Nom, string Matricule) : base(Prenom, Nom, Matricule)
+        public Commercial(double SalaireBrut, double chiffreDaffaire, double commissionEnpourcentage, string Prenom, string Nom, string Matricule, double TauxCS /*DateTime DateNaissance*/)
+            : base(Matricule, Nom, Prenom, /*DateNaissance*/ TauxCS, SalaireBrut)
         {
             _chiffreDaffaire = chiffreDaffaire;
             _commissionEnPourcentage = commissionEnpourcentage;
 
         }
 
+        // Méthode CalculerSalaireNet
+
+        public override double SalaireNet()
+        {
+            
+            return (base.SalaireNet() + (base.SalaireNet() * ComPourcentage));
+
+
+        }
+
+              
+        
         // Getter, Setter
 
         public double chiffreDaffaire
         {
             get { return (this._chiffreDaffaire); }
+            set
+            {
+                _chiffreDaffaire = value;
+
+            }
         }
 
         public double ComPourcentage
         {
             get { return (this._commissionEnPourcentage); }
+            set
+            {
+                _commissionEnPourcentage = value;
+
+            }
         }
 
 
@@ -59,7 +79,7 @@ namespace SalariesdLL
 
         // Constructeur par défaut
 
-        public Salarie(string Matricule, string Nom, string Prenom, DateTime DateNaissance, double TauxCS, double SalaireBrut)
+        public Salarie(string Matricule, string Nom, string Prenom, /*DateTime DateNaissance,*/ double TauxCS, double SalaireBrut)
         {
             _matricule = Matricule;
             _nom = Nom;
@@ -69,19 +89,7 @@ namespace SalariesdLL
             _SalaireBrut = SalaireBrut;
         }
 
-        public virtual void GetInfo()
-        {
-            Console.WriteLine("Matricule: {0}", Matricule);
-            Console.WriteLine("Nom: {1}", Nom);
-            Console.WriteLine("Prenom: {2}", Prenom);
-            Console.WriteLine("Date de naissance: {3}", DateNaissance);
-        }
-
-
-
-
-
-        
+          
 
         // Substitution de la méthode Equals()
         public override bool Equals(object obj)
@@ -102,12 +110,7 @@ namespace SalariesdLL
         }
 
        
-        //~Salarie() { _count--; }
-
-        //IDisposable();
-
-
-        // Compteur d'instances
+       // Compteur d'instances
 
         private static int _count = 0;
         public Salarie() { _count++; }
@@ -137,16 +140,23 @@ namespace SalariesdLL
             DateNaissance = salarie.DateNaissance;
         }
 
-       
 
+        // Méthodes
 
-        // Ajouter à la classe Salarie la méthode Equals()
+        public double SalaireBrut
+        {
+            get { return (this._SalaireBrut); }
+            set
+            {
+                _SalaireBrut = value;
 
+            }
 
-
-
-
-        // Méthode
+        }
+        public virtual double SalaireNet()
+        {
+           return this._SalaireBrut * (1 - _TauxCS);
+        }
 
         public string Matricule
         {

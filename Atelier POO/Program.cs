@@ -15,13 +15,13 @@ namespace Atelier_POO
             //Console.WriteLine(salarie1.Prenom);
             //Console.WriteLine($"nb instances {Salarie.Count}");
 
-            Salarie salarie2 = new Salarie("Robin", "Valdez", "12cvb45");
-            //String s = "ppp";
-           
+            //Salarie salarie2 = new Salarie("Robin", "Valdez", "12cvb45");
+            ////String s = "ppp";
+
             // Console.WriteLine(salarie2.Equals(s));
             //Console.WriteLine($"nb instances {Salarie.Count}");
 
-            Salarie salarie3 = new Salarie("Robin", "Poulets", "12cvb45");
+            //Salarie salarie3 = new Salarie("Robin", "Poulets", "12cvb45");
             //Console.WriteLine("{0}, {1}, {2}", salarie3.Nom, "Moped", salarie2.Matricule);
             //Console.WriteLine($"nb instances {Salarie.Count}");
 
@@ -31,12 +31,12 @@ namespace Atelier_POO
             //Salarie salarie5 = new Salarie() { Nom = "bost", Matricule = "12ghj12" };
             //Console.WriteLine($"nb instances {~Salarie.Count}");
 
-            bool Verif = Salarie.Equals(salarie2, salarie3);
-            Console.WriteLine(Verif);
+            //bool Verif = Salarie.Equals(salarie2, salarie3);
+            //Console.WriteLine(Verif);
             /*Debug.WriteLine(salarie2, salarie3);*/
 
-            Commercial commercial1 = new Commercial(15000, 0.5, "Rob", "Gibs", "12xgv45");
-            Console.WriteLine(commercial1.Matricule);
+            Commercial commercial1 = new Commercial(60000, 750000, 0.75, "Robert", "Morrisson", "12cvb12", 0.3);
+            Console.WriteLine(commercial1.SalaireNet());
 
 
 
